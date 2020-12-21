@@ -1,0 +1,696 @@
+:root {
+	--orange: hsla(32, 100%, 50%, 1);
+	--yellow: hsla(49, 99%, 50%, 1);
+	--lime: hsla(82, 90%, 45%, 1);
+	--green: hsla(127, 81%, 41%, 1);
+	--red: hsla(342, 93%, 53%, 1);
+	--darkRed: hsla(0, 100%, 25%, 1);
+	--pink: hsla(314, 85%, 45%, 1);
+	--blue: hsla(211, 92%, 52%, 1);
+	--purple: hsla(283, 92%, 44%, 1);
+	--cyan: hsla(195, 98%, 55%, 1);
+	--white: hsla(0, 0%, 95%, 1);
+	--black: hsla(0, 0%, 10%, 1);
+	--gray:  hsla(0,0%,0%,0.2);
+
+	/* abstract our colours */
+	--boxMain: var(--blue);
+	--boxSecond: var(--cyan);
+	--boxHigh: var(--orange);
+	--boxGray: var(--gray);
+
+	--border: 1vmin solid var(--black);
+	--borderRad: 2px;
+}
+
+@font-face {
+    font-family: lato;
+    src: url(files/lato_thin.woff);
+    font-weight: bold;
+    }
+
+
+* {box-sizing: border-box;}
+body {
+
+	background-color: var(--white);
+	padding: 4vmax;
+	font-family: "lato"; 
+	color: var(--black);
+}
+
+@media screen and (max-width: 400px) {
+	body {
+		max-width: 600px;
+	}
+}
+
+
+#all_grid{
+	display: grid;
+	/*grid-template-columns: 20% 50% 25%;*/
+	/*grid-template-columns: repeat(3, auto);*/
+	grid-template-columns: 20% repeat(2,auto);
+	grid-template-rows: repeat(3, auto);
+	grid-template-areas: 
+	"body1 body2 body3"
+	"body2_1 body2_2 body2_3"
+	"body3_1 body3_2 body3_3";
+}
+
+
+.scenes_links{
+	display: grid;
+	grid-template-columns: repeat(5, auto);
+	grid-template-areas: 
+	"scene1 scene2 scene3 scene4 scene5";
+}
+.btn{
+	margin-top: 10px;
+
+}
+
+
+#left_side {
+	grid-area:body2_2;
+}
+
+#instructions{
+	grid-area:body2_3;
+}
+
+/*#instructions_text_left{
+	display: none;
+}*/
+#instructions_text{
+	display: block;
+}
+
+#intro_left{
+	grid-area:body1;
+}
+#content span{display: none;}
+
+#right_side {
+	grid-area:body3;
+}
+@media screen and (max-width: 600px) {
+
+/*s*/
+	#instructions_text{
+		display: none;
+	}
+
+	#content span{display: block;}
+	
+	#intro_left span{
+		display:none;
+	}
+
+	#left_side {
+		grid-area: body3_1;
+		width: 82vw; 
+		max-width: 800px; 
+	}
+	#right_side{
+		grid-area:body2_1;
+		width: 82vw; 
+		max-width: 800px; 
+	}
+	#content{
+		/*width: 10px;*/
+	}
+}
+
+#boombox {
+	grid-area: body2;
+	width: 90vw; 
+	max-width: 700px; 
+	margin: 0px auto;
+}
+
+#left_side1{
+	grid-area:body2;
+}
+@media screen and (max-width: 600px) {
+	#boombox {
+		grid-area:body1;
+		/*max-width: 600px;*/
+	}
+}
+
+.boombox-body {
+	border: 6px solid var(--black);
+	border-radius: var(--borderRad);
+}
+/*small screen with one circle*/
+@media screen and (max-width: 600px) {
+	.boombox-body {
+		background-repeat: no-repeat;
+		background-position: center top;
+		background-size: 100% 100%;
+		background-image:
+/*		radial-gradient(circle,
+			var(--boxMain) 4vmin,
+			var(--black) 4vmin,
+			var(--black) 5vmin,
+			var(--boxSecond) 5vmin,
+			var(--boxSecond) 21vmin,
+			var(--black) 21vmin,
+			var(--black) 21.5vmin,
+			var(--boxSecond) 21.5vmin,
+			var(--boxSecond) 24vmin,
+			var(--black) 24vmin,
+			var(--black) 25vmin,
+			var(--boxMain) 25vmin);*/
+	}
+}
+
+.master-controls {
+
+	display: grid;
+	grid-template-rows: repeat(6, auto) 300px auto auto;
+	grid-template-columns: repeat(6, 15%) 12%;
+	/*name our grid areas so they are more manipulative later*/
+	grid-template-areas:
+		" auxtwo auxthree auxfour auxfive auxmaster "
+		" aux2_2 aux2_3 aux2_4 aux2_5 auxmaster2 "
+		" aux3_2 aux3_3 aux3_4 aux3_5 auxmaster3 "
+		" aux4_2 aux4_3 aux4_4 aux4_5 auxmaster4 "
+		" aux5_2 aux5_3 aux5_4 aux5_5 auxmaster5 "
+		" aux6_2 aux6_3 aux6_4 aux6_5 auxmaster6 "
+		" vol2 vol3 vol4 vol5 volmaster "
+		" vollab2 vollab3 vollab4 vollab5 vollabmaster "
+		" random2 random3 random4 random5 random6 ";
+	justify-items: center; align-items: center;
+	padding: 2vmax;
+	background-color: var(--boxGray);
+	border-bottom: var(--border);
+}
+/* change control grid areas for smaller boom box */
+@media screen and (max-width: 600px) {
+	.master-controls {
+	grid-gap: 8px;
+	grid-template-rows: repeat(6, auto) 180px auto;
+	grid-template-columns: repeat(6, 15%) 12%;
+		/*grid-template-columns: 16% 1fr 12%;*/
+	grid-template-areas:
+			"auxone auxtwo auxthree auxfour auxfive auxmaster auxpower"
+			"aux2_1 aux2_2 aux2_3 aux2_4 aux2_5 auxmaster2 aux2_power"
+			"aux3_1 aux3_2 aux3_3 aux3_4 aux3_5 auxmaster3 aux3_power"
+			"aux4_1 aux4_2 aux4_3 aux4_4 aux4_5 auxmaster4 aux4_power"
+			"aux5_1 aux5_2 aux5_3 aux5_4 aux5_5 auxmaster5 aux5_power"
+			"aux6_1 aux6_2 aux6_3 aux6_4 aux6_5 auxmaster6 aux6_power"
+			"vol1 vol2 vol3 vol4 vol5 volmaster power"
+			"vollab1 vollab2 vollab3 vollab4 vollab5 vollabmaster vollabpower"
+			"random1 random2 random3 random4 random5 random6 random7";
+	}
+}
+
+.playback-controls{
+	grid-area:volmaster; 
+	align-self: center;
+  	display: grid;	
+	grid-template-columns: subgrid;
+	grid-template-rows: subgrid;
+	padding: 5px;
+}
+
+
+.control-power {
+	align-self: center;
+	width: 80px; height: 80px;
+	border: 3px solid var(--black); border-radius: 5px;
+	cursor: pointer;
+	background-color: darkgray;
+}
+.control-power span {display: none;}
+
+.control-rec {
+	width: 80px; height: 80px;
+	border: 3px solid var(--black); border-radius: 80px;
+	cursor: pointer;
+	margin-top: 10px;
+	background-color: #F00000AA;
+}
+
+@media screen and (max-width: 600px){
+	.playback-controls{
+		margin-left: -20px;
+		width: 50px;
+	}
+	.tape-controls-play{
+		margin-left: -25px;
+	}
+	.control-power{
+		width: 40px; height: 40px;
+		align-self: center;
+		margin-left: -5px;
+	}
+	.control-rec{
+		width:40px; height: 40px;
+		align-self: center;
+		margin-left: -5px;
+	}
+}
+
+
+
+.aux1{
+	grid-area: auxone; align-self: center;
+	width: 60px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+.aux2{
+	grid-area: auxtwo; align-self: center;
+	width: 60px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+.aux3{
+	grid-area: auxthree; align-self: center;
+	width: 60px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+.aux4{
+	grid-area: auxfour; align-self: center;
+	width: 60px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+.aux5{
+	grid-area: auxfive; align-self: center;
+	width: 60px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+.aux6{
+	grid-area: aux2_1; align-self: center;
+	width: 60px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+.aux7{
+	grid-area: aux2_2; align-self: center;
+	width: 60px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+.aux8{
+	grid-area: aux2_3; align-self: center;
+	width: 60px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+.aux9{
+	grid-area: aux2_4; align-self: center;
+	width: 60px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+.aux10{
+	grid-area: aux2_5; align-self: center;
+	width: 60px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+.aux11{
+	grid-area: aux3_1; align-self: center;
+	width: 60px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+.aux12{
+	grid-area: aux3_2; align-self: center;
+	width: 60px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+.aux13{
+	grid-area: aux3_3; align-self: center;
+	width: 60px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+.aux14{
+	grid-area: aux3_4; align-self: center;
+	width: 60px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+.aux15{
+	grid-area: aux3_5; align-self: center;
+	width: 60px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+.aux16{
+	grid-area: aux4_1; align-self: center;
+	width: 60px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+.aux17{
+	grid-area: aux4_2; align-self: center;
+	width: 60px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+.aux18{
+	grid-area: aux4_3; align-self: center;
+	width: 60px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+.aux19{
+	grid-area: aux4_4; align-self: center;
+	width: 60px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+.aux20{
+	grid-area: aux4_5; align-self: center;
+	width: 60px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+
+
+.master-controls input, .master-controls label {display: block;}
+.master-controls input::before, .master-controls input::after {
+	line-height: 5vh; color: var(--black);
+}
+.master-controls input::before {padding-right: 1vw;}
+.master-controls input::after {padding-left: 1vw;}
+
+
+label[for="vol_label_1"] {grid-area: vollab1; margin-top: 15px;}
+label[for="vol_label_2"] {grid-area: vollab2; margin-top: 15px;}
+label[for="vol_label_3"] {grid-area: vollab3; margin-top: 15px;}
+label[for="vol_label_4"] {grid-area: vollab4; margin-top: 15px;}
+label[for="vol_label_5"] {grid-area: vollab5; margin-top: 15px;}
+label[for="vol_label_aux1"] {grid-area: auxmaster; margin-top: 15px;}
+label[for="vol_label_aux2"] {grid-area: auxmaster2; margin-top: 15px;}
+label[for="vol_label_aux3"] {grid-area: auxmaster3; margin-top: 15px;}
+label[for="vol_label_aux4"] {grid-area: auxmaster4; margin-top: 15px;}
+label[for="vol_label_aux5"] {grid-area: auxmaster5; margin-top: 15px;}
+label[for="vol_label_aux6"] {grid-area: auxmaster6; margin-top: 15px;}
+label[for="vol_label_MASTER"] {grid-area: vollab4; margin-top: 15px;}
+
+
+label[for="vol_label_aux1"] span.mobile{display: none;}
+label[for="vol_label_aux2"] span.mobile{display: none;}
+label[for="vol_label_aux3"] span.mobile{display: none;}
+label[for="vol_label_aux4"] span.mobile{display: none;}
+
+.randombutton span.mobile{
+		display:none;
+	}
+
+@media screen and (max-width: 600px) {
+	label[for="volume"], label[for="panner"] {margin-top: 0px;}
+
+	label[for="vol_label_aux1"] span.large{display: none;}
+	label[for="vol_label_aux1"] span.mobile{display: block;}
+
+	label[for="vol_label_aux2"] span.large{display: none;}
+	label[for="vol_label_aux2"] span.mobile{display: block;}
+
+	label[for="vol_label_aux3"] span.large{display: none;}
+	label[for="vol_label_aux3"] span.mobile{display: block;}
+
+	label[for="vol_label_aux4"] span.large{display: none;}
+	label[for="vol_label_aux4"] span.mobile{display: block;}
+
+	label[for="vol_label_aux1"] {grid-area: auxpower; margin-top: 15px;}
+	label[for="vol_label_aux2"] {grid-area: aux2_power; margin-top: 15px;}
+	label[for="vol_label_aux3"] {grid-area: aux3_power; margin-top: 15px;}
+	label[for="vol_label_aux4"] {grid-area: aux4_power; margin-top: 15px;}
+
+	label[for="vol_label_1"] {font-size:10px;}
+	label[for="vol_label_2"] {font-size:10px;}
+	label[for="vol_label_3"] {font-size:10px;}
+	label[for="vol_label_4"] {font-size:10px;}
+	label[for="vol_label_5"] {font-size:10px;}
+	label[for="vol_label_MASTER"] {font-size:10px;}
+
+	.randombutton{
+		font-size:8px;
+	}
+	.randombutton span.large{
+		display:none;
+	}
+	.randombutton span.mobile{
+		display:block;
+	}
+}
+}
+
+
+
+audio {
+	grid-area: tape;
+}
+/*TODO GIVE BUTTONS CLASSES*/
+[class^="tape-controls"] {
+	border: none;
+	width: 80px; height: 80px;
+}
+
+.playback-controls{
+	border:5px solid black;
+	background-color: gray;
+}
+
+/* ~~~~~~~~~~~~~~~~ All the crazy range styling */
+input[type=range] {
+  -webkit-appearance: none;
+	width: 30vw;
+  background: transparent;
+}
+/* set min & max for different screen sizes */
+@media screen and (min-width: 1100px) {
+	input[type=range] {width: 270px;
+						height: 50px;
+	}
+}
+@media(max-width: 600px) {
+	input[type=range] {
+		width: 180px;
+	}
+}
+@media(max-width: 600px) {
+	input[type=range] {
+		width: 130px;
+	}
+}
+
+input[type=range]::-ms-track {
+  width: 10%;
+  height: 80%
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  margin-top: -1vh;
+	height: 4vh; width: 2vw;
+	border: 0.5vmin solid var(--black);
+  border-radius: var(--borderRad);
+  background-color: var(--boxMain);
+  cursor: pointer;
+}
+input[type=range]::-moz-range-thumb {
+  height: 4vh; width: 2vw;
+	border: 0.5vmin solid var(--black);
+  border-radius: var(--borderRad);
+  background-color: var(--boxMain);
+  cursor: pointer;
+}
+input[type=range]::-ms-thumb {
+  height: 4vh; width: 2vw;
+	border: 0.5vmin solid var(--black);
+  border-radius: var(--borderRad);
+  background-color: var(--boxMain);
+  cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  height: 2vh;
+  cursor: pointer;
+  background-color: var(--black);
+  border-radius: var(--borderRad);
+}
+input[type=range]::-moz-range-track {
+  height: 2vh;
+  cursor: pointer;
+  background-color: var(--black);
+  border-radius: var(--borderRad);
+}
+input[type=range]::-ms-track {
+  height: 2vh;
+  cursor: pointer;
+  background-color: var(--black);
+  border-radius: var(--borderRad);
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: var(--boxMain);
+}
+
+input[type=range].control-volume-MASTER::-webkit-slider-runnable-track{
+  background-color: var(--darkRed);
+}
+input[type=range].control-volume-MASTER::-webkit-slider-thumb {
+  background-color: var(--red);
+}
+
+/*~~~~~~~~~~~~~~~~ the play pause & power icons*/
+[data-playing] {
+	background: transparent url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z" fill="black" /></svg>') no-repeat center center;
+	background-size: 60% 60%;
+	cursor: pointer;
+}
+[data-playing]:hover {
+	background: transparent url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z" fill="hsla(32, 100%, 50%, 1)" /></svg>') no-repeat center center;
+	background-size: 60% 60%;
+}
+[data-playing="true"] {
+	background: transparent url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M144 479H48c-26.5 0-48-21.5-48-48V79c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v352c0 26.5-21.5 48-48 48zm304-48V79c0-26.5-21.5-48-48-48h-96c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48z" fill="black" /></svg>') no-repeat center center;
+	background-size: 60% 60%;
+}
+[data-playing="true"]:hover {
+	background: transparent url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M144 479H48c-26.5 0-48-21.5-48-48V79c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v352c0 26.5-21.5 48-48 48zm304-48V79c0-26.5-21.5-48-48-48h-96c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48z" fill="hsla(32, 100%, 50%, 1)" /></svg>') no-repeat center center;
+	background-size: 60% 60%;
+}
+
+
+@media screen and (max-width: 600px) {
+	[data-playing] {
+		background-size: 30% 30%;
+	}
+	[data-playing]:hover {
+		background-size: 30% 30%;
+	}
+	[data-playing="true"] {
+		background-size: 30% 30%;
+	}
+	[data-playing="true"]:hover {
+		background-size: 30% 30%;
+	}
+
+
+	[stop]{
+	background-color: #AAAAAAAA;
+	}
+	[stop]:hover{
+		background-color: #AAAAAAFF;
+	}
+	[stop="true"]{
+		background-color: #AAAAAAFF;
+	}
+	[stop="true"]:hover{
+		background-color: #AAAAAAAA;
+	}
+
+
+
+	[data-recording]{
+		background-size: 30% 30%;
+	}
+	[data-recording]:hover{
+		background-size: 30% 30%;
+	}
+	[data-recording="true"]{
+		background-size: 30% 30%;
+	}
+	[data-recording="true"]:hover{
+		background-size: 30% 30%;
+	}
+
+}
+
+
+[data-recording]{
+	background-color: #F00000AA;
+}
+[data-recording]:hover{
+	background-color: #FF0000FF;
+}
+[data-recording="true"]{
+	background-color: #FF0000FF;
+}
+[data-recording="true"]:hover{
+	background-color: #F00000AA;
+}
+
+[stop]{
+	background-color: #AAAAAAAA;
+}
+[stop]:hover{
+	background-color: #AAAAAAFF;
+}
+[stop="true"]{
+	background-color: #AAAAAAFF;
+}
+[stop="true"]:hover{
+	background-color: #AAAAAAAA;
+}
+
+
+
+.control-volume{
+	grid-area: vol1;
+	margin-top: 30px;
+	width: 8px;
+    height: 50px;
+    padding: 0 5px;
+    transform: rotate(270deg);	
+}
+.control-volume-2{
+	grid-area: vol2;
+	margin-top: 30px;
+	width: 8px;
+    height: 	50px;
+    padding: 0 5px;
+    transform: rotate(270deg);}
+
+.control-volume-3{
+	grid-area: vol3;
+	margin-top: 30px;
+	width: 8px;
+    height: 50px;
+    padding: 0 5px;
+    transform: rotate(270deg);}
+
+.control-volume-4{
+	grid-area: vol4;
+	margin-top: 30px;
+	width: 8px;
+    height: 50px;
+    padding: 0 5px;
+    transform: rotate(270deg);}
+
+.control-volume-5{
+	grid-area: vol5;
+	margin-top: 30px;
+	width: 8px;
+    height: 50px;
+    padding: 0 5px;
+    transform: rotate(270deg);}
+
+
+.control-volume-MASTER{
+	grid-area: vol4;
+	margin-top: 30px;
+	width: 8px;
+    height: 50px;
+    padding: 0 5px;
+    transform: rotate(270deg);}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mixer</title>
+
+<link rel="stylesheet" href="bootstrap.min.css">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="knobs.css">
+<link rel="stylesheet" href="knob_2.css">
+
+<!-- new gauge CSS stylesheets -->
+<link rel="stylesheet" href="assets/css/styles.css" />
+<link rel="stylesheet" href="assets/knobKnob/knobKnob.css" />
+
+</head>
+
+<body>
+
+<div id="headers" style="margin-left: 20px">
+  <h1>LATE JUNCTIONS.</h1> 
+  <h2>virtual sound in space:</h2>
+</div>
+
+<div id="all_grid" >
+
+  <div id="audio_files">
+    <audio crossOrigin='anonymous' loop id="track1" controls="controls" style="visibility: hidden;">
+      <source id="audioSource1" src="https://dev.ideas-block.com/mixer/files/bike/city/1-1.mp3"></source>
+        Your browser does not support the audio format.
+    </audio>
+
+  </div>
+  
+<div id="intro_left"  style="margin-left: 20px"  >
+  <span>
+    <p  id="content_text_intro_left"
+        class="row title intro"
+        style=' color:black; 
+                font-family:"lato";
+                margin-right: 10px;
+                '>
+
+    </p>
+  </span>
+</div>
+  
+<div id="right_side">
+  
+  <!-- <h2>Įrašai</h2> -->
+    <ul id="recordingslist"></ul>
+
+</div>
+
+
+<div id="boombox">
+
+  <!-- COLOURFUL KNOB -->
+    <p style="width:100px; margin:auto;">DRY / WET</p>
+    <div id="bars">
+        <div id="control">
+            <!-- The knob markup will go here -->
+        </div>
+                        <!-- The colorful dividers will go here -->
+    </div>
+  <!-- /COLOURFUL KNOB -->
+
+  <div class="boombox-body">
+    
+    <section class="master-controls">
+
+
+ 
+      
+
+
+      <!-- VOL MASTER-->
+      <input type="range" id="volumeMASTER" class="control-volume-MASTER" min="0" max="1.5" value="1" list="gain-vals" step="0.01" data-action="volume" />
+      <datalist id="gain-vals">
+        <option value="0" label="min">
+        <option value="2" label="max">
+      </datalist>
+
+
+      <label for="vol_label_MASTER">MASTER</label>
+
+      <!-- <label for="vol_label_aux1"><span class="large">Reverb</span><span class="mobile">Rvrb.</span></label> -->
+   
+      <div class="playback-controls">
+        <button data-playing="false" class="tape-controls-play" role="switch" aria-checked="false">
+        </button>
+
+        <button stop="false" class="control-power" role="switch" aria-checked="false" data-power="on">
+          <span>On/Off</span>
+        </button>
+
+      </div>
+
+    </section>
+    
+  </div><!-- boombox-body -->
+
+
+  <div id="left_side1"  style="margin-left: 20px"  >
+          <div id="content">
+            
+            <span>
+            <p  id="content_text_intro"
+                class="row title intro"
+                style=' color:black; 
+                        font-family:"lato";
+                        margin-right: 10px;
+                        text-align:justify;
+                        '>
+
+            </p>
+            </span>
+            <p  id="content_text" 
+                class="row title" 
+                style=' color:black; 
+                        font-family:"lato";
+                        margin-right: 10px;
+                        text-align:justify;
+                        '>      
+            </p>
+          </div>
+  </div>
+
+  
+</div>
+
+
+
+
+</div>
+
+</body>
+
+<!-- JAVASCRIPT -->
+<script src="recorder.js"></script>
+<script src="reverb.js"></script>
+<script src="tuna.js"></script>
+<script src="audio_script.js"></script>
+<!-- <script src="knobs.js"></script> -->
+<script src="add_text.js"></script>
+
+<!-- new gauge -->
+<script src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="assets/knobKnob/transform.js"></script>
+<script src="assets/knobKnob/knobKnob.jquery.js"></script>
+<script src="assets/js/script.js"></script>
+
+</html>

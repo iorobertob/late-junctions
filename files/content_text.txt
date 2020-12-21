@@ -1,0 +1,15 @@
+<br>
+Convolution reverb is an exciting technology that sound designers can use to capture the impulse responses (IRs) of any physical location (such as caves, churches, offices, or hallways) and process audio in real time as though it were being played at that location. In effect, the IRs are capturing the reverberations of real locations, thereby allowing a new level of realism and immersion in environmental audio processing.
+<br>
+<br>
+n addition to capturing real-life reverberations, IRs can be derived from any other sound source: algorithmic reverb output, foley, VO (such as huffs or breaths), contact mics, and so on. IRs can be edited and processed like any other sound—they can be filtered, attenuated, reversed, chopped-up, edited, and more. In this way, the Convolution Reverb feature introduces a whole new dimension of experimentation.
+<br>
+<br> 
+Convolution reverb provides a data-driven alternative to more traditional algorithmic reverb techniques that simulate reverberation using a combination of delay buffers, filters, and various other DSP topologies.
+<br>
+<br> 
+
+
+
+
+

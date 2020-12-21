@@ -1,0 +1,2 @@
+- Scan mp3 files' folders to automatically get the file names and fill an array and register the size of that array. (number of files) because now it's hardcoded
+- 
