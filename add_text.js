@@ -14,13 +14,13 @@
       // httpRequestInstr.onreadystatechange = setContentsInstr;
 
       //Open then send the request to your page
-      httpRequest.open('GET', "https://dev.ideas-block.com/mixer/files/content_text.txt");
+      httpRequest.open('GET', "https://misc.lmta.lt/junctions/files/texts/content_text.txt");
       httpRequest.send();
 
-      httpRequestIntro.open('GET', "https://dev.ideas-block.com/mixer/files/intro.txt");
+      httpRequestIntro.open('GET', "https://misc.lmta.lt/junctions/files/texts/intro.txt");
       httpRequestIntro.send();
 
-      httpRequestInstr.open('GET', "https://dev.ideas-block.com/mixer/files/instrukcija.txt");
+      httpRequestInstr.open('GET', "https://misc.lmta.lt/junctions/files/texts/instrukcija.txt");
       httpRequestInstr.send();
        
 
