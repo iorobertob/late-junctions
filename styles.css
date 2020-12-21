@@ -694,3 +694,7 @@ input[type=range].control-volume-MASTER::-webkit-slider-thumb {
     height: 50px;
     padding: 0 5px;
     transform: rotate(270deg);}
+
+ .image-container{
+ 	width:100%;
+ }
